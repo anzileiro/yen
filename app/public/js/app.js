@@ -6,7 +6,10 @@
 var yenApp = angular.module('yenApp', [])
 
 yenApp.controller('indexController', function($scope, $http) {
-    $http.get('http://localhost:7000/v1/product').then(function(_products) {
+    $http({
+        method: 'GET',
+        url: 'http://localhost:7000/v1/product'
+    }).then(function(_products) {
         console.log(_products)
         //$scope.products = _products
     })
