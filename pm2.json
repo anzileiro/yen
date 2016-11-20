@@ -14,7 +14,8 @@
             "watch": true,
             "env": {
                 "YEN_API_NODE_ENV": "development",
-                "YEN_API_NODE_HTTP_PORT": 7000
+                "YEN_API_NODE_HTTP_PORT": 7000,
+                "YEN_API_MONGODB_URI": "mongodb://localhost:32768/yen"
             },
             "env_production": {
                 "YEN_API_NODE_ENV": "production"

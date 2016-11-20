@@ -6,8 +6,7 @@ const Mongoose = require('mongoose')
 let model = new Schema({
     name: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     description: {
         type: String,

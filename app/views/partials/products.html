@@ -13,23 +13,11 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Curry</td>
-                <td>India curry</td>
-                <td>$ 5,99</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Sushi</td>
-                <td>Matsuya special meat</td>
-                 <td>$ 5,99</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Rice</td>
-                <td>Japanese rice</td>
-                 <td>$ 5,99</td>
+            <tr ng-repeat="item in products">
+                <th scope="row">{{ item._id }}</th>
+                <td>{{ item.name }}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.price }}</td>
             </tr>
         </tbody>
     </table>

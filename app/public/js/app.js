@@ -1,19 +1,13 @@
 'use strict'
 
-var yenApp = angular.module('yenApp', ['ngRoute'])
+//http://localhost:7000/v1/product/ -> GET
+//http://localhost:7000/v1/product/ -> POST
 
-yenApp.config(function($routeProvider) {
-    $routeProvider
-        .when('/docs', {
-            templateUrl: '/docs',
-            controller: 'docsController'
-        })
-        .when('/products', {
-            templateUrl: '/products',
-            controller: 'productsController'
-        })
-})
+var yenApp = angular.module('yenApp', [])
 
-yenApp.controller('indexController', function($scope) {
-
+yenApp.controller('indexController', function($scope, $http) {
+    $http.get('http://localhost:7000/v1/product').then(function(_products) {
+        console.log(_products)
+        //$scope.products = _products
+    })
 })

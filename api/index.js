@@ -5,23 +5,28 @@ const Express = require('express')
     , Parser = require('body-parser')
     , Mongoose = require('mongoose')
     , Bluebird = require('bluebird')
+    , Database = require('./configs/database')
+    , Routes = require('./routes/api')
+    , Response = require('./utils/response')
     , App = Express()
 
-// Mongoose.Promise = Bluebird
-// Mongoose.connect(Database.url)
+Mongoose.Promise = Bluebird
+Mongoose.connect(Database.mongodb.URI)
 
 App.use(Compression())
 App.use(Parser.json())
-App.use(Parser.urlencoded({ extended: false }))
+App.use(Parser.urlencoded({
+    extended: false
+}))
 
-App.get('/get', (_request, _response) => {
-    return _response.status(200).json({
-        code: 200,
-        status: 'ok',
-        result: {
-            message: 'api working'
-        }
-    })
+App.use((_request, _response, _next) => {
+    _request.header("Access-Control-Allow-Origin", "*")
+    Response.init(_response)
+    _next()
+})
+
+Routes.forEach((_) => {
+    App[_.method]([_.path], [_.handler])
 })
 
 App.listen(process.env.YEN_API_NODE_HTTP_PORT, () => {
