@@ -1,0 +1,24 @@
+.demo-layout-transparent {
+  background: url('https://i.redditmedia.com/Dj9WFm-wKs_gCgRYx9eVfMgn1vSHSNiRw05wWzzZGiA.jpg?w=768&s=3b183adae8facc3355c48e35d2807acb') center / cover;
+}
+
+.demo-layout-transparent .mdl-layout__header{
+    background-color: #000; 
+    opacity: 0.8;
+}
+
+.demo-layout-transparent .mdl-layout__header,
+.demo-layout-transparent .mdl-layout__drawer-button {
+  /* This background is dark, so we set text to white. Use 87% black instead if
+     your background is light. */
+  color: white;
+}
+
+.mdl-layout__content{
+    color: #fff;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}

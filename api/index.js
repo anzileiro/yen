@@ -19,11 +19,11 @@ App.get('/get', (_request, _response) => {
         code: 200,
         status: 'ok',
         result: {
-            message: 'working'
+            message: 'api working'
         }
     })
 })
 
-App.listen(9000, () => {
-    console.log(`Server running at localhost on port: ${9000} in test mode`)
+App.listen(process.env.YEN_API_NODE_HTTP_PORT, () => {
+    console.log(`Server running at localhost on port: ${process.env.YEN_API_NODE_HTTP_PORT} in test mode`)
 })

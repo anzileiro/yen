@@ -3,7 +3,7 @@
 const SupertTest = require("supertest")
     , should = require("should")
 
-let Server = SupertTest.agent('http://localhost:9000');
+let Server = SupertTest.agent(`http://localhost:${process.env.NODE_HTTP_PORT}`);
 
 describe('testing api routes', () => {
 

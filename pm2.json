@@ -1,0 +1,76 @@
+{
+    "apps": [
+        {
+            "name": "yen-api",
+            "script": "./api/index.js",
+            "instances": 1,
+            "ignore_watch": [
+                "node_modules",
+                ".DS_Store",
+                ".vscode",
+                "logs",
+                ".git"
+            ],
+            "watch": true,
+            "env": {
+                "YEN_API_NODE_ENV": "development",
+                "YEN_API_NODE_HTTP_PORT": 7000
+            },
+            "env_production": {
+                "YEN_API_NODE_ENV": "production"
+            },
+            "error_file": "./logs/api_error.log",
+            "out_file": "./logs/api_out.log",
+            "pid_file": "./logs/api_pid.pid",
+            "exec_mode": "cluster_mode"
+        },
+        {
+            "name": "yen-auth",
+            "script": "./auth/index.js",
+            "instances": 1,
+            "ignore_watch": [
+                "node_modules",
+                ".DS_Store",
+                ".vscode",
+                "logs",
+                ".git"
+            ],
+            "watch": true,
+            "env": {
+                "YEN_AUTH_NODE_ENV": "development",
+                "YEN_AUTH_NODE_HTTP_PORT": 8000
+            },
+            "env_production": {
+                "YEN_AUTH_NODE_ENV": "production"
+            },
+            "error_file": "./logs/auth_error.log",
+            "out_file": "./logs/auth_out.log",
+            "pid_file": "./logs/auth_pid.pid",
+            "exec_mode": "cluster_mode"
+        },
+        {
+            "name": "yen-app",
+            "script": "./app/index.js",
+            "instances": 1,
+            "ignore_watch": [
+                "node_modules",
+                ".DS_Store",
+                ".vscode",
+                "logs",
+                ".git"
+            ],
+            "watch": true,
+            "env": {
+                "YEN_APP_NODE_ENV": "development",
+                "YEN_APP_NODE_HTTP_PORT": 9000
+            },
+            "env_production": {
+                "YEN_APP_NODE_ENV": "production"
+            },
+            "error_file": "./logs/app_error.log",
+            "out_file": "./logs/app_out.log",
+            "pid_file": "./logs/app_pid.pid",
+            "exec_mode": "cluster_mode"
+        }
+    ]
+}
