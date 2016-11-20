@@ -8,12 +8,12 @@ yenApp.config(function($routeProvider) {
             templateUrl: '/docs',
             controller: 'docsController'
         })
+        .when('/products', {
+            templateUrl: '/products',
+            controller: 'productsController'
+        })
 })
 
 yenApp.controller('indexController', function($scope) {
-    $scope.message = 'Index'
-})
 
-yenApp.controller('docsController', function($scope) {
-    $scope.message = 'Docs'
 })

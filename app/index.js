@@ -1,16 +1,14 @@
 'use strict'
 
 const Express = require('express')
+    , Routes = require('./routes/app')
     , App = Express()
 
 App.use(Express.static(__dirname + '/public'))
+App.use(Express.static(__dirname + '/views/partials'))
 
-App.get('/', (_request, _response) => {
-    _response.sendFile(__dirname + '/views/index.html')
-})
-
-App.get('/docs', (_request, _response) => {
-    _response.sendFile(__dirname + '/views/docs.html')
+Routes.forEach((_) => {
+    App[_.method]([_.path], [_.handler])
 })
 
 App.listen(process.env.YEN_APP_NODE_HTTP_PORT, () => {
