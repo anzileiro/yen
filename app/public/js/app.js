@@ -5,11 +5,13 @@
 
 var yenApp = angular.module('yenApp', [])
 
-yenApp.controller('indexController', function($scope, $http) {
-    $http({
-        method: 'GET',
-        url: 'http://localhost:7000/v1/product'
-    }).then(function(_products) {
+yenApp.config(['$httpProvider', function ($httpProvider) {
+    $httpProvider.defaults.useXDomain = true
+    delete $httpProvider.defaults.headers.common['X-Requested-With']
+}])
+
+yenApp.controller('indexController', function ($scope, $http) {
+    $http.get('http://localhost:7000/v1/product').then(function (_products) {
         console.log(_products)
         //$scope.products = _products
     })

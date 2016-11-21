@@ -25,6 +25,13 @@ App.use((_request, _response, _next) => {
     _next()
 })
 
+App.all('/*', (_request, _response, _next) => {
+    _response.header("Access-Control-Allow-Origin", "*")
+    _response.header("Access-Control-Allow-Headers", "X-Requested-With")
+    _response.header("Access-Control-Allow-Methods", "GET, POST", "PUT")
+    _next()
+})
+
 Routes.forEach((_) => {
     App[_.method]([_.path], [_.handler])
 })
