@@ -1,8 +1,11 @@
 <div>
-    <button type="button" class="btn btn-info">Get token</button>
-    <button type="button" class="btn btn-success">Load products</button>
+    <button type="button" class="btn btn-info" ng-click="getToken()">Get token</button>
+    <button type="button" class="btn btn-success" ng-click="getProducts()">Load products</button>
 </div>
-<hr />
+<hr>
+<p><b>token: </b>{{ token }}</p>
+<p><b>expiration: </b>{{ expiration }}</p>
+<hr>
 <div>
     <table class="table table-striped">
         <thead>

@@ -12,6 +12,13 @@ App.use(Compression())
 App.use(Parser.json())
 App.use(Parser.urlencoded({ extended: false }))
 
+App.all('/*', (_request, _response, _next) => {
+    _response.header("Access-Control-Allow-Origin", "*")
+    _response.header("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With")
+    _response.header("Access-Control-Allow-Methods", "GET, POST", "PUT")
+    _next()
+})
+
 App.get('/v1/token', (_request, _response) => {
     return _response.status(200).json({
         code: 200,
