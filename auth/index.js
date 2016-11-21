@@ -15,7 +15,7 @@ App.use(Parser.urlencoded({ extended: false }))
 App.all('/*', (_request, _response, _next) => {
     _response.header("Access-Control-Allow-Origin", "*")
     _response.header("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With")
-    _response.header("Access-Control-Allow-Methods", "GET, POST", "PUT")
+    _response.header("Access-Control-Allow-Methods", "GET, POST")
     _next()
 })
 
@@ -42,14 +42,12 @@ App.post('/v1/token', (_request, _response) => {
         if (_error) {
             return _response.status(403).json({
                 code: 403,
-                status: 'unauthorized',
-                result: _error
+                status: 'unauthorized'
             })
         } else {
             return _response.status(200).json({
                 code: 200,
-                status: 'ok',
-                result: _decoded
+                status: 'ok'
             })
         }
     })
