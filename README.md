@@ -2,7 +2,7 @@
 
 Ü
 
-# stack and technologies
+# stack and technologies:
 
 - nodejs
 - express
@@ -10,6 +10,10 @@
 - mocha
 - supertest
 - mongoose
+- compression
+- md5
+- uuid
+- bluebird
 - angularjs
 - bootstrap
 
@@ -18,7 +22,7 @@
     nodejs
     mongodb
 
-# exec these commands
+# exec these commands:
 
 `npm install -g pm2` <br />
 `npm install` <br />
