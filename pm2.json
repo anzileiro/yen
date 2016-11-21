@@ -63,7 +63,8 @@
             "watch": true,
             "env": {
                 "YEN_APP_NODE_ENV": "development",
-                "YEN_APP_NODE_HTTP_PORT": 9000
+                "YEN_APP_NODE_HTTP_PORT": 9000,
+                "YEN_AUTH_SECRET": "crowley"
             },
             "env_production": {
                 "YEN_APP_NODE_ENV": "production"
