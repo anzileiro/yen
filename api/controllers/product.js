@@ -41,13 +41,19 @@ let controller = {
         })
     },
     getAll: (_request, _response) => {
-        return Repository.selectFrom(ProductModel).then((_result) => {
-            if (_result.length > 0) {
-                return Response.ok(_result)
-            } else {
-                return Response.notFound()
-            }
-        })
+        console.log(_request.headers['token'])
+        console.log(_request.session.token)
+        if (_request.headers['token'] === _request.session.token) {
+            return Repository.selectFrom(ProductModel).then((_result) => {
+                if (_result.length > 0) {
+                    return Response.ok(_result)
+                } else {
+                    return Response.notFound()
+                }
+            })
+        } else {
+            return Response.unathorized()
+        }
     }
 }
 

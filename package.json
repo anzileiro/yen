@@ -20,13 +20,17 @@
     "bluebird": "3.4.6",
     "body-parser": "1.15.2",
     "compression": "1.6.2",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.1",
     "express": "4.14.0",
+    "express-session": "1.14.2",
     "jsonwebtoken": "7.1.9",
-    "md5": "^2.2.1",
+    "md5": "2.2.1",
     "mocha": "3.1.2",
     "mongoose": "4.6.8",
+    "request": "^2.79.0",
     "should": "11.1.1",
     "supertest": "2.0.1",
-    "uuid": "^3.0.0"
+    "uuid": "3.0.0"
   }
 }

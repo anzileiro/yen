@@ -6,6 +6,7 @@ const Express = require('express')
     , Jwt = require('jsonwebtoken')
     , Md5 = require('md5')
     , Uuid = require('uuid')
+    , Request = require('request')
     , App = Express()
 
 App.use(Compression())
@@ -20,21 +21,42 @@ App.all('/*', (_request, _response, _next) => {
 })
 
 App.get('/v1/token', (_request, _response) => {
-    return _response.status(200).json({
-        code: 200,
-        status: 'ok',
-        result: {
-            token: Jwt.sign(
-                {
-                    data: `${Md5(Uuid.v1())}`
-                },
-                `${process.env.YEN_AUTH_SECRET}`,
-                {
-                    expiresIn: 60
-                }),
-            expiration: 60
+
+    let token = Jwt.sign(
+        {
+            data: `${Md5(Uuid.v1())}`
+        },
+        `${process.env.YEN_AUTH_SECRET}`,
+        {
+            expiresIn: 60
+        })
+
+    Request({
+        url: 'http://localhost:7000/v1/session/set',
+        method: 'POST',
+        json: {
+            token: token,
+            shared: process.env.YEN_API_SHARED
+        }
+    }, function (error, response, body) {
+        if (error) {
+            return _response.status(500).json({
+                code: 500,
+                status: 'internalServerError',
+                result: error
+            })
+        } else {
+            return _response.status(200).json({
+                code: 200,
+                status: 'ok',
+                result: {
+                    token: response.body.result,
+                    expiration: 60
+                }
+            })
         }
     })
+
 })
 
 App.post('/v1/token', (_request, _response) => {

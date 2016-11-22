@@ -1,6 +1,7 @@
 'use strict'
 
 const ProductController = require('../controllers/product')
+    , SessionController = require('../controllers/session')
 
 let routes = [
     {
@@ -27,6 +28,16 @@ let routes = [
         method: 'get',
         path: '/v1/product/',
         handler: ProductController.getAll
+    },
+    {
+        method: 'post',
+        path: '/v1/session/set',
+        handler: SessionController.set
+    },
+    {
+        method: 'post',
+        path: '/v1/session/verify',
+        handler: SessionController.verify
     }
 ]
 
